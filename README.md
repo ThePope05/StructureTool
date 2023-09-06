@@ -7,3 +7,5 @@ To get these tools to work simply
 
 And your good,
 now you can use the "Create" command
+
+To create a html file structure: Create html [ProjectName]
