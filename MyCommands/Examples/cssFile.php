@@ -7,8 +7,13 @@ class CssFile
 {
     public function createCssFile()
     {
-        $cssFile = "html {font-size: 16px;}";
-        $cssFile .= "*{box-sizing: border-box; margin: 0; padding: 0}";
+        $cssFile = "html {font-size: 16px;}
+        
+*{
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0
+}";
 
         return $cssFile;
     }
