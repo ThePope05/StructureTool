@@ -6,10 +6,16 @@ if($argc > 1){
 
     //echo "All paramaters: " . $Argv . "\n";
 
-    if ($argv[1] == "test") {
-        echo "Testing" . "\n";
-    } else if($argv[1] == "curDir") {
-        echo getcwd() . "\n";
+    //The argv in the if statement should be upper case
+
+    if($argv[1] == "html"){
+        echo "Test" . "\n";
+    }
+    else if($argv[1] == "test2"){
+        echo "Test2" . "\n";
+    }
+    else{
+        echo "Invalid paramater" . "\n";
     }
 }
 else{
