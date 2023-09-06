@@ -1,3 +1,3 @@
 @echo off
 
-php "C:\CustomCommands\MyCommands\TestCommand.php" %*
+php "C:\CustomCommands\MyCommands\CreateProject.php" %*
