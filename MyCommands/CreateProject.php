@@ -45,12 +45,23 @@ if ($argc > 1) {
             $jsDir = mkdir($dirName . "/Assets/Js", 0755);
             $jsFile = fopen($dirName . "/Assets/Js/script.js", "w");
             fclose($jsFile);
+
+            //Creating Images folder
+            $imagesDir = mkdir($dirName . "/Assets/Images", 0755);
+
+            //Creating PHP folder and file
+            $phpDir = mkdir($dirName . "/Assets/Php", 0755);
+            $phpFile = fopen($dirName . "/Assets/Php/index.php", "w");
+            fclose($phpFile);
+
+            echo "Created html structure" . "\n";
         } else {
-            echo "Excpected project name" . "\n";
+            echo "Excpected [project name]" . "\n";
         }
-    } else {
-        echo "Invalid paramater: " . $argv[1] . "\n";
+    }
+    else {
+        echo "Invalid keyword: " . $argv[1] . "\n";
     }
 } else {
-    echo "No paramaters" . "\n";
+    echo "Excpected keyword" . "\n";
 }
