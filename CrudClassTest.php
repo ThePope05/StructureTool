@@ -62,12 +62,6 @@ class CRUD
         }
         $stmt->execute();
     }
-    //I need a function that reads from the database
-    //The function should take in a string
-    //The string should be the of the column that will be used for the where comparison
-    //The function should take in a string
-    //The string should be the value that will be used for the where comparison
-    //The function should return an array of strings
 
     function Read(string $column, string $value)
     {
@@ -91,12 +85,6 @@ class CRUD
 
         return $result;
     }
-    //I need a function that updates the database
-    //The function should take in two strings and an array of strings
-    //The first string should be the of the column that will be used for the where comparison
-    //The second string should be the value that will be used for the where comparison
-    //The array of strings should be the values that will be used for the update
-    //The function should return a boolean
 
     function Update(string $column, string $value, array $listOfNewValues)
     {
@@ -123,6 +111,27 @@ class CRUD
             $stmt->bindParam(":" . $val, $listOfNewValues[$i]);
             $i++;
         }
+        $stmt->bindParam(":" . $column, $value);
+        $stmt->execute();
+
+        return true;
+    }
+    
+    function Delete(string $column, string $value)
+    {
+        try {
+            $pdo = new PDO($this->dsn, $this->DB->dbUser, $this->DB->dbPass);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+
+        //Creating the sql string
+        $sql = "DELETE FROM $this->TableName WHERE $column = :$column;";
+
+        //Prepare the sql statement
+        $stmt = $pdo->prepare($sql);
+
+        //Bind the values to the sql statement
         $stmt->bindParam(":" . $column, $value);
         $stmt->execute();
 

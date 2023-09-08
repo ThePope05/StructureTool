@@ -20,22 +20,21 @@ include("config.php");
 class CRUD
 {
     $dsn = "mysql:host=$dbHost;dbname=$dbName;charset=UTF8";
-    
+
     public function Create($listOfStrings)
     {
         try
         {
             $pdo = new PDO($dsn, $dbUser, $dbPass);
-            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $sql = "INSERT INTO $tableName (listOfStrings) VALUES (:listOfStrings)";
-            $stmt = $pdo->prepare($sql);
-            $stmt->bindParam(":listOfStrings", $listOfStrings);
-            $stmt->execute();
         }
         catch(PDOException $e)
         {
             echo $e->getMessage();
         }
+        $sql = "INSERT INTO $tableName (listOfStrings) VALUES (:listOfStrings)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(":listOfStrings", $listOfStrings);
+        $stmt->execute();
     }
 }';
 
