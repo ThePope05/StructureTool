@@ -1,67 +1,82 @@
 <?php
 
-include_once("Examples/htmlPage.php");
-include_once("Examples/cssFile.php");
-// I need a if statement here to check the paramater so that I can run different code depending on the paramater
+// include_once("Examples/htmlPage.php");
+// include_once("Examples/cssFile.php");
 
 if ($argc > 1) {
 
-    //echo "All paramaters: " . $Argv . "\n";
+    $allArg = scandir(__DIR__ . "/Examples");
 
-    //The argv in the if statement should be upper case
+    array_shift($allArg);
+    array_shift($allArg);
 
-    if ($argv[1] == "html") {
+    if (in_array($argv[1], $allArg)) {
         if ($argv[2] != null) {
-            echo "Creating html structure" . "\n";
+            echo "Creating structure" . "\n";
 
             if (is_dir(getcwd() . "/" . $argv[2])) {
                 echo "Project already exists" . "\n";
                 exit();
             }
 
-            $dirName = getcwd() . "/" . $argv[2];
+            //Creating the project folder
+            
+            $dir = getcwd() . "/" . $argv[2];
+            $projectDir = mkdir($dir, 0777);
 
-            $projectDir = mkdir($dirName, 0755);
+            if ($projectDir) {
+                echo "Created project folder" . "\n";
+                scanCopyDir($dir, __DIR__ . "/Examples/" . $argv[1]);
+            } else {
+                echo "Failed to create project folder" . "\n";
+                exit();
+            }
 
-            //Creating the index file
-            $indexFile = fopen($dirName . "/index.html", "w");
-            $indexFileContent = new HtmlPage($argv[2]);
-            $indexFileContent = $indexFileContent->createHtmlPage();
-            fwrite($indexFile, $indexFileContent);
-            fclose($indexFile);
 
-            //Creating Assets folder
-            $assetsDir = mkdir($dirName . "/Assets", 0755);
-
-            //Creating CSS folder and file
-            $cssDir = mkdir($dirName . "/Assets/Css", 0755);
-            $cssFile = fopen($dirName . "/Assets/Css/style.css", "w");
-            $cssFileContent = new CssFile();
-            $cssFileContent = $cssFileContent->createCssFile();
-            fwrite($cssFile, $cssFileContent);
-            fclose($cssFile);
-
-            //Creating JS folder and file
-            $jsDir = mkdir($dirName . "/Assets/Js", 0755);
-            $jsFile = fopen($dirName . "/Assets/Js/script.js", "w");
-            fclose($jsFile);
-
-            //Creating Images folder
-            $imagesDir = mkdir($dirName . "/Assets/Images", 0755);
-
-            //Creating PHP folder and file
-            $phpDir = mkdir($dirName . "/Assets/Php", 0755);
-            $phpFile = fopen($dirName . "/Assets/Php/index.php", "w");
-            fclose($phpFile);
-
-            echo "Created html structure" . "\n";
+            echo "\n" . "Process complete" . "\n \n";
         } else {
             echo "Excpected [project name]" . "\n";
         }
     }
     else {
-        echo "Invalid keyword: " . $argv[1] . "\n";
+        echo "Invalid keyword: " . $argv[1] . "\n \n";
+        echo "Valid keywords: " . "\n";
+        foreach($allArg as $arg){
+            echo "- " . $arg . "\n";
+        }
     }
 } else {
     echo "Excpected keyword" . "\n";
+}
+
+function scanCopyDir($dir = "", $exampleDir = ""){
+    $allFiles = scandir($exampleDir);
+    $toScan = [];
+
+    foreach($allFiles as $file){
+        if($file != "." && $file != ".."){
+            if(!is_dir($exampleDir . "/" . $file)){
+                $fileCopy = copy($exampleDir . "/" . $file, $dir . "/" . $file);
+                if($fileCopy){
+                    echo "Created " . $file . "\n";
+                }
+                else{
+                    echo "Failed to create " . $file . "\n";
+                    exit();
+                }
+            }
+            else{
+                $newDir = mkdir($dir . "/" . $file, 0777);
+                if($newDir){
+                    echo "Created " . $file . "\n";
+
+                    scanCopyDir($dir . "/" . $file . "/", $exampleDir . "/" . $file . "/");
+                }
+                else{
+                    echo "Failed to create " . $file . "\n";
+                    exit();
+                }
+            }
+        }
+    }
 }
