@@ -1,11 +1,8 @@
 <?php
 
-// include_once("Examples/htmlPage.php");
-// include_once("Examples/cssFile.php");
-
 if ($argc > 1) {
 
-    $allArg = scandir(__DIR__ . "/Examples");
+    $allArg = scandir(__DIR__ . "/Structures");
 
     array_shift($allArg);
     array_shift($allArg);
@@ -26,7 +23,7 @@ if ($argc > 1) {
 
             if ($projectDir) {
                 echo "Created project folder" . "\n";
-                scanCopyDir($dir, __DIR__ . "/Examples/" . $argv[1]);
+                scanCopyDir($dir, __DIR__ . "/Structures/" . $argv[1]);
             } else {
                 echo "Failed to create project folder" . "\n";
                 exit();
