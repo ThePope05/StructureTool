@@ -32,6 +32,12 @@ Create html yourProjectName
 ```cmd
 Create mvc yourProjectName
 ```
+#### - Sub-command
+The mvc comes with a sub command, to create a new Controller, Model and View.
+To use said command, you have to be in the same directory as the Create.cmd and do:
+```cmd
+./Create.cmd YourControllerName
+```
 
 ## Custom structures
 
