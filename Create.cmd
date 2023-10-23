@@ -1,3 +1,3 @@
 @echo off
 
-php %~dp0/MyCommands/CreateProject.php %*
+php %~dp0MyCommands/CreateProject.php %*
