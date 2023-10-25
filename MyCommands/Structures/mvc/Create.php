@@ -1,21 +1,4 @@
 <?php
-//I want this script to be able to create a new model, view and controller
-//This will be done by copying some files and replacing some strings
-//First we need to get the name of the model, view and controller
-//We can do this by using the $argv variable
-//The first argument will be the name of the model
-//The second argument will be the name of the view
-//The third argument will be the name of the controller
-
-//The example files are located in the app/libraries/components folder
-//The example files are called newModel.php, newView.php and newController.php
-//The controller will be placed in the app/controllers folder
-//The model will be placed in the app/models folder
-//The view will be placed in the app/views folder
-
-//The example files contain the following strings:
-//MODEL_NAME the name of the model will be $argv[1]
-//CONTROLLER_NAME the name of the controller will be $argv[1] + Controller
 
 if (isset($argv[1])) {
     $model = $argv[1] . "Model";
