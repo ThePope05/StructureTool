@@ -13,9 +13,9 @@ class Database
             $this->dbHandler = new PDO($conn, DB_USER, DB_PASS);
 
             if ($this->dbHandler) {
-                // echo "Verbinding met de database is gelukt";
+                // echo "Connected to the database";
             } else {
-                echo "Interne server-error";
+                echo "Internal server error";
             }
         } catch (PDOException $e) {
             echo $e->getMessage();

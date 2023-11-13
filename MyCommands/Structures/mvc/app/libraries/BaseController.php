@@ -5,12 +5,11 @@ class BaseController
 
     public function view($view, $data = [])
     {
-        if ( file_exists('../app/views/' . $view . '.php')) {
+        if (file_exists('../app/views/' . $view . '.php')) {
             require_once('../app/views/' . $view . '.php');
         } else {
-            echo 'De view bestaat niet';
+            echo 'This view does not exist';
         }
-
     }
 
     public function model($model)
@@ -19,7 +18,7 @@ class BaseController
             require_once '../app/models/' . $model . '.php';
             return new $model();
         } else {
-            echo 'De model bestaat niet';
+            echo 'This model does not exist';
         }
     }
 }
