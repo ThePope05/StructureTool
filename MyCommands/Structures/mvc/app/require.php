@@ -1,7 +1,14 @@
 <?php
-    require_once 'libraries/Core.php';
-    require_once 'libraries/BaseController.php';
-    require_once 'libraries/Database.php';
-    require_once 'config/config.php';
+require_once 'libraries/Core.php';
+require_once 'libraries/BaseController.php';
+require_once 'libraries/Database.php';
+require_once 'config/config.php';
 
-    $init = new Core();
+$components = scandir('./components');
+foreach ($components as $component) {
+    if ($component != '.' && $component != '..') {
+        require_once './components/' . $component;
+    }
+}
+
+$init = new Core();
