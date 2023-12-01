@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +8,10 @@
     <link rel="stylesheet" href="<?= URLROOT; ?>/css/style.css">
     <title>Home screen</title>
 </head>
+
 <body>
-    <h2><?= $data['title']; ?></h2>
+    <h1><?= $data['title']; ?></h1>
+    <?php $this->component('exampleComponent', ['title' => 'Component']); ?>
 </body>
+
 </html>

@@ -21,4 +21,13 @@ class BaseController
             echo 'This model does not exist';
         }
     }
+
+    public function component($component, $componentData = [])
+    {
+        if (file_exists('../app/components/' . $component . '.php')) {
+            require '../app/view/components/' . $component . '.php';
+        } else {
+            echo 'This component does not exist';
+        }
+    }
 }
