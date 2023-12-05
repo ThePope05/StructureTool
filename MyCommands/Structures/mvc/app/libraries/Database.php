@@ -46,14 +46,13 @@ class Database
         $this->statement->bindValue($parameter, $value, $type);
     }
 
-    public function excecuteWithoutReturn()
+    public function execute(bool $return = false)
     {
-        $this->statement->execute();
-    }
-
-    public function resultSet()
-    {
-        $this->statement->execute();
-        return $this->statement->fetchAll(PDO::FETCH_OBJ);
+        if ($return) {
+            $this->statement->execute();
+            return $this->statement->fetchAll(PDO::FETCH_OBJ);
+        } else {
+            return $this->statement->execute();
+        }
     }
 }

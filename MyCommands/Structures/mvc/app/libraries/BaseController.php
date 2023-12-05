@@ -24,8 +24,8 @@ class BaseController
 
     public function component($component, $componentData = [])
     {
-        if (file_exists('../app/components/' . $component . '.php')) {
-            require '../app/view/components/' . $component . '.php';
+        if (file_exists('../app/views/components/' . $component . '.php')) {
+            require '../app/views/components/' . $component . '.php';
         } else {
             echo 'This component does not exist';
         }
