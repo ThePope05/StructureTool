@@ -20,13 +20,13 @@ $terminalStyles = [
     "hidden" => "\033[8m",
 ];
 
-writeTerminalLine([["bold", "underline"], "magenta"], "Thank you for using my structure tool");
+writeTerminalLine([["bold", "underline", "reverse"], "magenta"], "Thank you for using my structure tool");
 
 if ($argc > 1) {
 
     if (is_dir(__DIR__ . "/Structures/" . $argv[1])) {
         if ($argc > 2) {
-            writeTerminalLine(["bold", "green"], "Creating project");
+            writeTerminalLine(["blink", "green"], "Creating project");
 
             if (is_dir(getcwd() . "/" . $argv[2])) {
                 writeTerminalLine(["bold", "red"], "Project folder already exists");
