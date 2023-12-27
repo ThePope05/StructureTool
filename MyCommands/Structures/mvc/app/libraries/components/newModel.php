@@ -18,7 +18,7 @@ class MODEL_NAME
         //Here you can bind your parameters
         $this->db->bind(':id', $id);
 
-        //Here you can execute your query
-        return $this->db->resultSet();
+        //Here you can execute your query and return the result if you want
+        return $this->db->execute(true);
     }
 }
