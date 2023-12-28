@@ -116,5 +116,7 @@ function writeTerminalLine($style = [["bold"], "red"], $text = "No Text Specifie
 function cancelScript()
 {
     echo TS_Reset . "\n";
+    writeTerminalLine([["bold", "underline", "reverse"], "magenta"], "Thank you for using my structure tool");
+    echo TS_Reset . "\n";
     exit();
 }
