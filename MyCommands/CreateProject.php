@@ -59,6 +59,15 @@ if ($argc > 1) {
     }
 } else {
     writeTerminalLine(["bold", "red"], "Expected project structure");
+
+    $allStructures = scandir(__DIR__ . "/Structures");
+    $allStructures = array_slice($allStructures, 2);
+
+    writeTerminalLine(["bold", "green"], "Available structures:");
+    foreach ($allStructures as $structure) {
+        writeTerminalLine(["bold", "green"], " - " . $structure);
+    }
+
     cancelScript();
 }
 
