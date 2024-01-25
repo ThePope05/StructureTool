@@ -32,6 +32,18 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     writeTerminalLine(["bold", "green"], "Connected to database");
+
+    if (!isset($argv[1])) {
+        writeTerminalLine(["bold", "yellow"], "Database already exists, this could remove all data. Proceed? (y/n):");
+
+        $proceed = readline('');
+
+        if ($proceed == 'y') {
+            writeTerminalLine(["bold", "green"], "Proceeding...");
+        } else {
+            cancelScript();
+        }
+    }
 } catch (PDOException $e) {
     writeTerminalLine(["bold", "red"], "Connection failed: " . $e->getMessage());
     writeTerminalLine(["bold", "yellow"], "Possible database creation required");
