@@ -1,8 +1,8 @@
 <?php
 
-$port = 8000;
+include_once 'app/config/config.php';
 
-$server = sprintf('localhost:%d', $port);
+$server = "localhost:" . PORT;
 
 echo 'Server running on ' . $server . PHP_EOL;
 
