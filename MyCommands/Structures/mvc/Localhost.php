@@ -6,4 +6,4 @@ $server = "localhost:" . PORT;
 
 echo 'Server running on ' . $server . PHP_EOL;
 
-shell_exec(sprintf('php -S %s', $server) . " -t public/ -c php.ini");
+shell_exec(sprintf('php -S %s', $server) . " -t public/ -c app/config/php.ini");
