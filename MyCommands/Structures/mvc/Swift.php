@@ -155,7 +155,7 @@ if (isset($argv[1])) {
         removeAllTerminalStyles();
         shell_exec(sprintf('php -S %s', $server) . " -t public/ -c app/config/php.ini");
     } else {
-        writeTerminalLine(["bold", "red"], "Command not found");
+        writeTerminalLine(["bold", "red"], "Command not found" . PHP_EOL);
         writeTerminalLine(["bold", "yellow"], "Available commands:");
         writeTerminalLine(["bold", "yellow"], " - create -m -c -v -a");
         writeTerminalLine(["bold", "yellow"], " - database -m -c -v -a");
