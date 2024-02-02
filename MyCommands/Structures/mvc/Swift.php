@@ -153,7 +153,7 @@ if (isset($argv[1])) {
         $server = "localhost:" . PORT;
 
         removeAllTerminalStyles();
-        shell_exec(sprintf('php -S %s', $server) . " -t public/ -c app/config/php.ini");
+        shell_exec(sprintf('php -S %s router.php', $server) . " -c app/config/php.ini");
     } else {
         writeTerminalLine(["bold", "red"], "Command not found" . PHP_EOL);
         writeTerminalLine(["bold", "yellow"], "Available commands:");

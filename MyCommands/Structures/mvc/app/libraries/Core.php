@@ -9,11 +9,11 @@ class Core
     public function __construct()
     {
         $url = $this->getURL();
-        if (file_exists('../app/controllers/' . ucwords($url[0]) . '.php')) {
+        if (file_exists('./app/controllers/' . ucwords($url[0]) . '.php')) {
             $this->currentController = ucwords($url[0]);
             unset($url[0]);
         }
-        require_once '../app/controllers/' . $this->currentController . '.php';
+        require_once './app/controllers/' . $this->currentController . '.php';
 
         $this->currentController = new $this->currentController();
 
