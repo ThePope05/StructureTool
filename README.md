@@ -24,19 +24,59 @@ now you can use the "Create" command
 ### - HTML
 
 ```cmd
-Create html yourProjectName
+Create html YOUR_PROJECT_NAME
 ```
 
 ### - MVC Framework
 
 ```cmd
-Create mvc yourProjectName
+Create mvc YOUR_PROJECT_NAME
 ```
-#### - Sub-command
-The mvc comes with a sub command, to create a new Controller, Model and View.
-To use said command, you have to be in the same directory as the Create.cmd and do:
+### - __Swift__
+The mvc comes with it's own dev helper tool called __Swift__, this can help with starting a localhost, running database scripts and creating new models, views and controllers.
+
+To run the localhost do:
 ```cmd
-./Create.cmd YourControllerName
+php Swift.php localhost
+```
+__*you need to fill in the config.php*__
+
+To run the database scripts from the folder 'db' do:
+```cmd
+php Swift.php database
+```
+__*you need to fill in the config.php*__
+It is possible to run single scripts instead of the whole folder content,
+to do this run:
+```cmd
+php Swift.php database 01
+```
+*replace '01' with the numebr of your script*
+
+To create a new __Model__:
+```cmd
+php Swift.php create MODEL_NAME -m
+```
+the script automatically adds 'Model' to the end of the name so there is no need to do this
+
+To create a new __Controller__ do:
+```cmd
+php Swift.php create CONTROLLER_NAME -c
+```
+
+To create a new __ViewFolder__ and __View__ do:
+```cmd
+php Swift.php create VIEW_FOLDER_NAME -v
+```
+
+
+To create a new __Model__, __View__ and __Controller__ do:
+```cmd
+php Swift.php create NAME -a
+```
+or:
+```cmd
+php Swift.php create NAME -m -v -c
 ```
 
 ## Custom structures
@@ -54,5 +94,5 @@ so say you add a python structure like this:
 Your command to create this structure would be
 
 ```cmd
-Create pythonStructure yourProjectName
+Create pythonStructure YOUR_PROJECT_NAME
 ```
