@@ -3,6 +3,13 @@
 
 class CONTROLLER_NAME extends BaseController
 {
+    private $model;
+
+    public function __construct()
+    {
+        $this->model = $this->model('CONTROLLER_NAMEModel');
+    }
+
     public function index()
     {
         $data = [

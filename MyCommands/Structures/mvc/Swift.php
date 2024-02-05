@@ -158,7 +158,7 @@ if (isset($argv[1])) {
         writeTerminalLine(["bold", "red"], "Command not found" . PHP_EOL);
         writeTerminalLine(["bold", "yellow"], "Available commands:");
         writeTerminalLine(["bold", "yellow"], " - create -m -c -v -a");
-        writeTerminalLine(["bold", "yellow"], " - database -m -c -v -a");
+        writeTerminalLine(["bold", "yellow"], " - database [filenumber]");
         writeTerminalLine(["bold", "yellow"], " - localhost");
         cancelScript();
     }

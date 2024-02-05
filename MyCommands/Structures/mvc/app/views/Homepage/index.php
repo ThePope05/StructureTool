@@ -1,4 +1,4 @@
-<?php $this->component('PageEsentials/head', ['title' => "HomePage"]); ?>
+<?php $this->component('PageEssentials/head', ['title' => "HomePage"]); ?>
 
 <body>
     <h1><?= $data['title']; ?></h1>

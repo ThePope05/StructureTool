@@ -1,5 +1,5 @@
 <?php
-$this->component('PageEsentials/head', ['title' => $data['title']]);
+$this->component('PageEssentials/head', ['title' => $data['title']]);
 ?>
 
 <body>
