@@ -9,19 +9,21 @@ class Core
     public function __construct()
     {
         $url = $this->getURL();
-        if (file_exists('./app/controllers/' . ucwords($url[0]) . '.php')) {
-            $this->currentController = ucwords($url[0]);
-            unset($url[0]);
+        if (isset($url[1])) {
+            if (file_exists('./app/controllers/' . ucwords($url[1]) . '.php')) {
+                $this->currentController = ucwords($url[1]);
+                unset($url[1]);
+            }
         }
         require_once './app/controllers/' . $this->currentController . '.php';
 
         $this->currentController = new $this->currentController();
 
 
-        if (isset($url[1])) {
-            if (method_exists($this->currentController, $url[1])) {
-                $this->currentMethod = $url[1];
-                unset($url[1]);
+        if (isset($url[2])) {
+            if (method_exists($this->currentController, $url[2])) {
+                $this->currentMethod = $url[2];
+                unset($url[2]);
             }
         }
 
@@ -34,12 +36,14 @@ class Core
 
     public function getURL()
     {
-        if (isset($_GET['url'])) {
-            $url = rtrim($_GET['url'], '/');
+        if (isset($_SERVER['REQUEST_URI'])) {
+            $url = rtrim($_SERVER['REQUEST_URI'], '/');
 
             $url = filter_var($url, FILTER_SANITIZE_URL);
 
             $url = explode('/', $url);
+
+            unset($url[0]);
 
             return $url;
         } else {

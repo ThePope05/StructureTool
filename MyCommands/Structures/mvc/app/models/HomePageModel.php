@@ -1,6 +1,6 @@
 <?php
 
-class HomePageModel
+class HomePageModel extends BaseModel
 {
     private $db;
 

@@ -1,6 +1,6 @@
 <?php
 
-class MODEL_NAME
+class MODEL_NAME extends BaseModel
 {
     private $db;
 
