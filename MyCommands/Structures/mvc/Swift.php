@@ -70,6 +70,22 @@ if (isset($argv[1])) {
                 fwrite($newViewFile, $viewContent);
                 fclose($newViewFile);
             }
+            if (in_array("-d", $argv)) {
+                writeTerminalLine(["bold", "green"], "Creating new database file");
+
+                //Create the database
+                $dbFile = fopen("./app/libraries/components/newDatabaseScript.sql", "r") or die("Unable to open file!");
+                $dbContent = fread($dbFile, filesize("./app/libraries/components/newDatabaseScript.sql"));
+                fclose($dbFile);
+
+                $allDbFiles = glob('./app/db/*.sql');
+                $fileCount = count($allDbFiles) + 1;
+                $fileNumber = ($fileCount < 10) ? (string)('0' . $fileCount) : $fileCount;
+
+                $newDbFile = fopen("./app/db/" . $fileNumber . "_" . $controller . ".sql", "w") or die("Unable to open file!");
+                fwrite($newDbFile, $dbContent);
+                fclose($newDbFile);
+            }
 
             writeTerminalLine(["bold", "green"], "Finished task...");
             cancelScript();
@@ -157,7 +173,7 @@ if (isset($argv[1])) {
     } else {
         writeTerminalLine(["bold", "red"], "Command not found" . PHP_EOL);
         writeTerminalLine(["bold", "yellow"], "Available commands:");
-        writeTerminalLine(["bold", "yellow"], " - create -m -c -v -a");
+        writeTerminalLine(["bold", "yellow"], " - create -m -c -v -a -d");
         writeTerminalLine(["bold", "yellow"], " - database [filenumber]");
         writeTerminalLine(["bold", "yellow"], " - localhost");
         cancelScript();
@@ -188,7 +204,7 @@ function removeAllTerminalStyles()
     echo TS_Reset;
 }
 
-function cancelScript($message = "Thank you for using my MVC framework")
+function cancelScript($message = "Stopping Swift")
 {
     echo TS_Reset . "\n";
     writeTerminalLine([["bold", "underline", "reverse"], "magenta"], $message);
