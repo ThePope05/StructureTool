@@ -20,9 +20,12 @@ $terminalStyles = [
     "hidden" => "\033[8m",
 ];
 
-writeTerminalLine([["bold", "underline", "reverse"], "magenta"], "Thank you for using my structure tool");
-
 if ($argc > 1) {
+
+    if ($argv[1] == "-v"){
+        writeTerminalLine(["bold", "green"], "¯\_(ツ)_/¯ no clue");
+        cancelScript();
+    }
 
     if (is_dir(__DIR__ . "/Structures/" . $argv[1])) {
         if ($argc > 2) {
@@ -124,8 +127,6 @@ function writeTerminalLine($style = [["bold"], "red"], $text = "No Text Specifie
 
 function cancelScript()
 {
-    echo TS_Reset . "\n";
-    writeTerminalLine([["bold", "underline", "reverse"], "magenta"], "Thank you for using my structure tool");
     echo TS_Reset . "\n";
     exit();
 }
