@@ -37,46 +37,46 @@ The mvc comes with it's own dev helper tool called __Swift__, this can help with
 
 To run the localhost do:
 ```cmd
-php Swift.php localhost
+php Swift localhost
 ```
 __*you need to fill in the config.php*__
 
 To run the database scripts from the folder 'db' do:
 ```cmd
-php Swift.php database
+php Swift database
 ```
 __*you need to fill in the config.php*__
 It is possible to run single scripts instead of the whole folder content,
 to do this run:
 ```cmd
-php Swift.php database 01
+php Swift database 01
 ```
 *replace '01' with the numebr of your script*
 
 To create a new __Model__:
 ```cmd
-php Swift.php create MODEL_NAME -m
+php Swift create MODEL_NAME -m
 ```
 the script automatically adds 'Model' to the end of the name so there is no need to do this
 
 To create a new __Controller__ do:
 ```cmd
-php Swift.php create CONTROLLER_NAME -c
+php Swift create CONTROLLER_NAME -c
 ```
 
 To create a new __ViewFolder__ and __View__ do:
 ```cmd
-php Swift.php create VIEW_FOLDER_NAME -v
+php Swift create VIEW_FOLDER_NAME -v
 ```
 
 
 To create a new __Model__, __View__ and __Controller__ do:
 ```cmd
-php Swift.php create NAME -a
+php Swift create NAME -a
 ```
 or:
 ```cmd
-php Swift.php create NAME -m -v -c
+php Swift create NAME -m -v -c
 ```
 
 ## Custom structures
